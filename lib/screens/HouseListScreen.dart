@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_svg/svg.dart';
 import '../models/RealEstateModel.dart';
 import '../services/RealEstateService.dart';
 
 class HouseListScreen extends StatefulWidget {
   @override
-  State<HouseListScreen> createState() => _HouseListViewState();
+  State<HouseListScreen> createState() => _HouseListScreenState();
 }
 
-class _HouseListViewState extends State<HouseListScreen> {
+class _HouseListScreenState extends State<HouseListScreen> {
   late Future<List<RealEstateModel>> futureHouses;
 
   @override
@@ -21,10 +21,25 @@ class _HouseListViewState extends State<HouseListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Houses'),
+        title: Text('DTT Real Estate'),
+      ),
+      body: FutureBuilder<List<RealEstateModel>>(
+        future: futureHouses,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text('Failed to load houses'));
+          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return Center(child: Text('No houses available'));
+          } else {
+          final houses = snapshot.data!;
+
+          }
+        },
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: '',
@@ -36,7 +51,7 @@ class _HouseListViewState extends State<HouseListScreen> {
         ],
         currentIndex: 0,
         onTap: (index) {
-          // Handle bottom navigation
+          // Later: navigatie logica
         },
       ),
     );
