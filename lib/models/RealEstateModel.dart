@@ -27,4 +27,20 @@ class RealEstateModel {
     required this.createdDate,
   });
 
+  factory RealEstateModel.fromJson(Map<String, dynamic> json) {
+    return RealEstateModel(
+      id: json['id'],
+      image: json['image'],
+      price: json['price'],
+      bedrooms: json['bedrooms'],
+      bathrooms: json['bathrooms'],
+      size: json['size'],
+      description: json['description'],
+      zip: json['zip'],
+      city: json['city'],
+      latitude: (json['latitude'] as num).toDouble(),
+      longitude: (json['longitude'] as num).toDouble(),
+      createdDate: json['createdDate'],
+    );
+  }
 }
