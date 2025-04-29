@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:real_estate_app_dtt/screens/HouseListView.dart';
+import 'package:real_estate_app_dtt/screens/HouseListScreen.dart';
 import 'package:real_estate_app_dtt/screens/SplashScreen.dart';
 
 void main() {
@@ -19,7 +19,7 @@ class RealEstateApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => SplashScreen(),
-        '/houses': (context) => HouseListView(),
+        '/houses': (context) => HouseListScreen(),
       },
     );
   }
