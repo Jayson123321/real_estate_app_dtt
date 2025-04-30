@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../models/RealEstateModel.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:intl/intl.dart';
 
 class HouseDetailScreen extends StatelessWidget {
   final RealEstateModel house;
@@ -10,6 +11,8 @@ class HouseDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // for price format
+    final formatter = NumberFormat('#,###');
     return Scaffold(
       body: Column(
         children: [
@@ -45,9 +48,11 @@ class HouseDetailScreen extends StatelessWidget {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                     children: [
                       Text(
-                        '\$${house.price}',
+
+                        '\$${formatter.format(house.price)}',
                         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                       ),
                       Row(

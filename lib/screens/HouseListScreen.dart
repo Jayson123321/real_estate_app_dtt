@@ -4,7 +4,7 @@ import '../models/RealEstateModel.dart';
 import '../services/RealEstateService.dart';
 import 'HouseDetailScreen.dart';
 import 'InformationScreen.dart';
-
+import 'package:intl/intl.dart';
 class HouseListScreen extends StatefulWidget {
   @override
   State<HouseListScreen> createState() => _HouseListScreenState();
@@ -22,6 +22,8 @@ class _HouseListScreenState extends State<HouseListScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // for price format
+    final formatter = NumberFormat('#,###');
     return Scaffold(
       appBar: AppBar(
         title: Text('DTT Real Estate'),
@@ -100,7 +102,7 @@ class _HouseListScreenState extends State<HouseListScreen> {
                             fit: BoxFit.cover,
                           ),
                           title: Text(
-                            '\$${house.price}',
+                            '\$${formatter.format(house.price)}',
                             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                           ),
                           subtitle: Column(
