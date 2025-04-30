@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../models/RealEstateModel.dart';
 import '../services/RealEstateService.dart';
+import 'HouseDetailScreen.dart';
+import 'InformationScreen.dart';
 
 class HouseListScreen extends StatefulWidget {
   @override
@@ -134,7 +136,12 @@ class _HouseListScreenState extends State<HouseListScreen> {
                             ],
                           ),
                           onTap: () {
-                            print('Tapped on house ID ${house.id}');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HouseDetailScreen(house: house),
+                              ),
+                            );
                           },
                         ),
                       );
@@ -152,9 +159,16 @@ class _HouseListScreenState extends State<HouseListScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.info), label: ''),
         ],
         currentIndex: 0,
-        onTap: (index) {
-
-        },
+    onTap: (index) {
+      if (index == 1) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const InformationScreen(),
+          ),
+        );
+      }
+    },
       ),
     );
   }
