@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:real_estate_app_dtt/screens/HouseListScreen.dart';
 import 'package:real_estate_app_dtt/screens/SplashScreen.dart';
 
-void main() {
+Future<void> main() async {
+  await dotenv.load(fileName: ".env");
   runApp(RealEstateApp());
 }
 
@@ -24,6 +26,3 @@ class RealEstateApp extends StatelessWidget {
     );
   }
 }
-
-
-
